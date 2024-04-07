@@ -9,9 +9,8 @@ import java.util.Iterator;
 
 @Repository
 public class CafeRepository {
-
     public Iterator<MenuItem> getTheMenuIterator() {
-        Menu cafeMenu = new CafeMenu();
-        return cafeMenu.createIterator();
+        Menu cafe = new CafeMenu();
+        return cafe.createIterator();
     }
 }
