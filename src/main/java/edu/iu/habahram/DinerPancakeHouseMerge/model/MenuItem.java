@@ -1,7 +1,9 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
 
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.function.Predicate;
 
 public class MenuItem extends MenuComponent{
     String name;
@@ -46,5 +48,14 @@ public class MenuItem extends MenuComponent{
 
     public Iterator<MenuComponent> createIterator() {
         return null;
+    }
+
+    @Override
+    public Iterator<MenuItem> filterItems(Predicate<MenuItem> predicate) {
+        if (predicate.test(this)) {
+            return Collections.singleton(this).iterator();
+        } else {
+            return Collections.emptyIterator();
+        }
     }
 }

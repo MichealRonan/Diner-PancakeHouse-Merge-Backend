@@ -1,6 +1,7 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
 import java.util.Iterator;
+import java.util.function.Predicate;
 
 public abstract class MenuComponent {
     public void add(MenuComponent menuComponent) {
@@ -31,4 +32,6 @@ public abstract class MenuComponent {
     }
 
     public abstract Iterator<MenuComponent> createIterator();
+
+    public abstract Iterator<MenuItem> filterItems(Predicate<MenuItem> predicate);
 }

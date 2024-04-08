@@ -3,6 +3,8 @@ package edu.iu.habahram.DinerPancakeHouseMerge.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class Menu extends MenuComponent{
     Iterator<MenuComponent> iterator = null;
@@ -49,4 +51,20 @@ public class Menu extends MenuComponent{
         }
         return iterator;
     }
+
+    public Iterator<MenuItem> filterItems(Predicate<MenuItem> filter) {
+        List<MenuItem> filteredItems = new ArrayList<>();
+        Iterator<MenuComponent> iterator = createIterator();
+        while (iterator.hasNext()) {
+            MenuComponent component = iterator.next();
+            if (component instanceof MenuItem) {
+                MenuItem item = (MenuItem) component;
+                if (filter.test(item)) {
+                    filteredItems.add(item);
+                }
+            }
+        }
+        return filteredItems.iterator();
+    }
+
 }
